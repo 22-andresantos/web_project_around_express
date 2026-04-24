@@ -7,9 +7,11 @@ const usersPath = path.join(__dirname, '..', 'data', 'users.json');
 router.get('/', async (req, res) => {
   try {
     const data = await fs.readFile(usersPath, 'utf-8');
-    res.status(200).send(JSON.parse(data));
+    return res.status(200).send(JSON.parse(data));
   } catch (error) {
-    res.status(500).send({ message: 'A solicitação não foi encontrada' });
+    return res
+      .status(500)
+      .send({ message: 'A solicitação não foi encontrada' });
   }
 });
 
@@ -18,15 +20,22 @@ router.get('/:id', async (req, res) => {
     const { id } = req.params;
     const data = await fs.readFile(usersPath, 'utf-8');
     const users = JSON.parse(data);
-    const user = users.find((u) => u._id === id);
+
+    console.log('ID que veio da URL:', id);
+    console.log('ID do primeiro usuário no JSON:', users[0]._id);
+    console.log('São iguais?', users[0]._id === id);
+
+    const user = users.find((u) => String(u._id) === id);
 
     if (!user) {
       return res.status(404).send({ message: 'Id do usuário não encontrado' });
     }
 
-    res.status(200).send(user);
+    return res.status(200).send(user);
   } catch (error) {
-    res.status(500).send({ message: 'A solicitação não foi encontrada' });
+    return res
+      .status(404)
+      .send({ message: 'A solicitação não foi encontrada' });
   }
 });
 
