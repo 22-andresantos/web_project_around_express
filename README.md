@@ -32,3 +32,77 @@ Busca por ID (GET /users/:id)
 
 Busca por ID não existente (GET /users/:id)
 ![Busca por ID não encontrado](./assets/postman_users_id_erro.png)
+
+Projeto 16 da Tripleten WEB
+data: 21/05/2026
+
+Around Express - Backend API
+
+1 - API REST desenvolvida com Node.js, Express e MongoDB, responsável pelo gerenciamento de usuários e cartões, incluindo curtidas, atualização de perfil e manipulação de dados persistidos no banco.
+
+2 - Tecnologias Utilizadas:
+Node.js
+Express
+MongoDB
+Mongoose
+JavaScript (ES6+)
+
+3 - Funcionalidades:
+Usuários
+Criar usuário
+Buscar todos os usuários
+Buscar usuário por ID
+Atualizar perfil
+Atualizar avatar
+
+4 - Cartões
+Criar cartão
+Listar cartões
+Deletar cartão
+Curtir cartão
+Remover curtida
+
+5 - Banco de Dados - Conexão MongoDB:
+
+mongodb://localhost:27017/aroundb
+
+Banco utilizado:
+
+aroundb
+
+6 - Validação de URL
+
+Os campos avatar e link utilizam validação com Expressão Regular (RegEx) para garantir URLs válidas:
+
+Exemplos aceitos:
+
+https://example.com
+http://www.example.com
+http://example.com/image.png
+
+7 - Tratamento de Erros
+
+Código Descrição
+400 Dados inválidos
+404 Usuário ou cartão não encontrado
+500 Erro interno do servidor
+
+Uso de:
+err.name
+
+.orFail()
+
+Middleware centralizado de erros
+
+8 - Aprendizados
+
+Este projeto aborda conceitos importantes de backend como:
+
+Arquitetura REST
+CRUD completo
+Modelagem MongoDB
+Relacionamento entre documentos
+Middleware
+Validação de dados
+Tratamento de erros
+Organização em MVC

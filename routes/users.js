@@ -1,42 +1,26 @@
 const router = require('express').Router();
-const path = require('path');
-const fs = require('fs').promises;
 
-const usersPath = path.join(__dirname, '..', 'data', 'users.json');
+const {
+  getUsers,
+  getUserById,
+  createUser,
+  updateUser,
+  updateAvatar,
+} = require('../controllers/users');
 
-router.get('/', async (req, res) => {
-  try {
-    const data = await fs.readFile(usersPath, 'utf-8');
-    return res.status(200).send(JSON.parse(data));
-  } catch (error) {
-    return res
-      .status(500)
-      .send({ message: 'A solicitação não foi encontrada' });
-  }
-});
+// Rota para obter todos os usuários
+router.get('/', getUsers);
 
-router.get('/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const data = await fs.readFile(usersPath, 'utf-8');
-    const users = JSON.parse(data);
+// Rota para obter um usuário específico por ID
+router.get('/:userId', getUserById);
 
-    console.log('ID que veio da URL:', id);
-    console.log('ID do primeiro usuário no JSON:', users[0]._id);
-    console.log('São iguais?', users[0]._id === id);
+// Rota para criar um novo usuário
+router.post('/', createUser);
 
-    const user = users.find((u) => String(u._id) === id);
+// Rota para atualizar um usuário específico
+router.patch('/:userId', updateUser);
 
-    if (!user) {
-      return res.status(404).send({ message: 'Id do usuário não encontrado' });
-    }
-
-    return res.status(200).send(user);
-  } catch (error) {
-    return res
-      .status(404)
-      .send({ message: 'A solicitação não foi encontrada' });
-  }
-});
+// Rota para atualizar o avatar de um usuário específico
+router.patch('/:userId/avatar', updateAvatar);
 
 module.exports = router;

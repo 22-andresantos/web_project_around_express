@@ -8,7 +8,7 @@
     "lint": "npx eslint .",
     "start": "node app.js",
     "dev": "nodemon app.js"
-  },  
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/22-andresantos/web_project_around_express.git"
@@ -26,6 +26,7 @@
     "nodemon": "^3.1.14"
   },
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "mongoose": "^9.6.2"
   }
 }
