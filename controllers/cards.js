@@ -17,7 +17,6 @@ module.exports.getCards = (req, res) => {
 
 // post/cards cria um novo cartão
 module.exports.createCard = (req, res) => {
-  console.log(req.user._id);
   const { name, link } = req.body;
 
   Card.create({

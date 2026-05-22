@@ -16,7 +16,7 @@ module.exports.getUsers = (req, res) => {
 
 // get/users/:id retorna um usuário específico
 module.exports.getUserById = (req, res) => {
-  const { userId } = req.params;
+  const userId = req.user._id;
 
   User.findById(userId)
     .then((user) => {

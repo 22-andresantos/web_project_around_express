@@ -18,9 +18,9 @@ router.get('/:userId', getUserById);
 router.post('/', createUser);
 
 // Rota para atualizar um usuário específico
-router.patch('/:userId', updateUser);
+router.patch('/me', updateUser);
 
 // Rota para atualizar o avatar de um usuário específico
-router.patch('/:userId/avatar', updateAvatar);
+router.patch('/me/avatar', updateAvatar);
 
 module.exports = router;

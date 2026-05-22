@@ -4,6 +4,9 @@ const mongoose = require('mongoose');
 
 const app = express();
 
+const usersRouter = require('./routes/users');
+const cardsRouter = require('./routes/cards');
+
 // MIDDLEWARE para o POST funcionar lendo o JSON)
 app.use(express.json());
 
@@ -18,9 +21,6 @@ app.use((req, res, next) => {
 mongoose.connect('mongodb://localhost:27017/aroundb');
 
 const { PORT = 3000 } = process.env;
-
-const usersRouter = require('./routes/users');
-const cardsRouter = require('./routes/cards');
 
 // conectando as rotas modulares
 app.use('/users', usersRouter);
